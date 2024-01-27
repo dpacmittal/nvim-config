@@ -19,12 +19,14 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Telescope, a highly extendable fuzzy finder over lists
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Rose Pine, a Neovim theme with a soothing pastel color palette
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -33,6 +35,7 @@ return require('packer').startup(function(use)
 	  end
   })
 
+  -- Trouble.nvim, a pretty list to help you solve diagnostics, references, and more
   use({
       "folke/trouble.nvim",
       config = function()
@@ -45,19 +48,21 @@ return require('packer').startup(function(use)
       end
   })
 
+  -- nvim-treesitter, Neovim treesitter configurations for better syntax highlighting
   use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
 				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 				ts_update()
 			end,}
-  use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
-  use("theprimeagen/refactoring.nvim")
-  use("mbbill/undotree")
-  use("tpope/vim-fugitive")
-  use("nvim-treesitter/nvim-treesitter-context");
+  use("nvim-treesitter/playground")  -- Tree-sitter playground for live and interactive syntax tree
+  use("theprimeagen/harpoon")  -- Harpoon, a utility to navigate and organize your workspace
+  use("theprimeagen/refactoring.nvim")  -- Refactoring tools for Neovim, powered by Treesitter
+  use("mbbill/undotree")  -- Undotree, a visual undo history tool
+  use("tpope/vim-fugitive")  -- Vim-fugitive, a Git wrapper for Vim
+  use("nvim-treesitter/nvim-treesitter-context");  -- nvim-treesitter-context, shows the context of the current function/class you're in
 
+  -- lsp-zero.nvim, an opinionated configuration for Neovim LSP, autocompletion, and snippets
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -81,11 +86,12 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
-  use("eandrju/cellular-automaton.nvim")
-  use("laytan/cloak.nvim")
+  use("folke/zen-mode.nvim")  -- Zen Mode, distraction-free coding for Neovim
+  use("github/copilot.vim")  -- GitHub Copilot, AI pair programmer plugin
+  use("eandrju/cellular-automaton.nvim")  -- Cellular Automaton, a generative art plugin
+  use("laytan/cloak.nvim")  -- Cloak, a plugin for sensitive data hiding in Neovim
 
+  -- Sync packer if it's the first run
   if packer_bootstrap then
     require('packer').sync()
   end
